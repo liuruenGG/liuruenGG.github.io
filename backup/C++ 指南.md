@@ -15,15 +15,7 @@ C++ 高级开发的第一准则就是：**严禁手动管理内存**。
 现代 C++（C++17/20）极大地简化了模板的使用，让编译器承担更多工作。
 * **`constexpr` 与 `consteval`**：将计算从运行期转移到编译器，提升程序启动速度和效率。
 * **Concepts (C++20)**：通过约束模板参数，彻底终结晦涩难懂的模板报错。
-    ```cpp
-    template<typename T>
-    concept Numeric = std::is_arithmetic_v<T>;
-
-    void process(Numeric auto value) { // 只有数字类型能通过编译
-        // ...
-    }
-    ```
-* **Type Traits**：利用 `std::enable_if` 或 `if constexpr` 实现编译期分支逻辑，减少生成代码的体积。
+    **Type Traits**：利用 `std::enable_if` 或 `if constexpr` 实现编译期分支逻辑，减少生成代码的体积。
 
 ### 3. 性能优化与缓存友好
 高级开发者需要理解底层硬件，尤其是 **CPU 缓存层级** 对代码效率的影响。
