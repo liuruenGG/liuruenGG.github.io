@@ -1,6 +1,5 @@
 ### 第三篇：Bilibili 主页分享
 
-```markdown
 欢迎来到我的 Bilibili 频道！一起分享有趣的日常
 
 我在 B站 都发些什么？
