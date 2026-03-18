@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/183621324?v=4&size=64"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="
+---
+
+## 1. NeoForge：正统继承者与现代平衡
+**适用版本：1.20.1+ (重点 1.21 及更高)**
+
+如果你追求大体量的内容扩展、复杂的机器逻辑或生物群系，**NeoForge** 是目前的工业标准。">
+<meta property="og:title" content="我的世界模组加载器科普">
+<meta property="og:description" content="
+---
+
+## 1. NeoForge：正统继承者与现代平衡
+**适用版本：1.20.1+ (重点 1.21 及更高)**
+
+如果你追求大体量的内容扩展、复杂的机器逻辑或生物群系，**NeoForge** 是目前的工业标准。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://liuruenGG.github.io/post/wo-de-shi-jie-mo-zu-jia-zai-qi-ke-pu.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/183621324?v=4&size=64">
+<title>我的世界模组加载器科普</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">我的世界模组加载器科普</h1>
+<div class="title-right">
+    <a href="https://liuruenGG.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/liuruenGG/liuruenGG.github.io/issues/7" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><hr>
+<h2>1. NeoForge：正统继承者与现代平衡</h2>
+<p><strong>适用版本：1.20.1+ (重点 1.21 及更高)</strong></p>
+<p>如果你追求大体量的内容扩展、复杂的机器逻辑或生物群系，<strong>NeoForge</strong> 是目前的工业标准。</p>
+<ul>
+<li><strong>背景：</strong> 2023 年，由于对原项目领导层的不满，几乎整个 Forge 原开发团队集体“出走”并分叉（Fork）出了 NeoForge。</li>
+<li><strong>技术特点：</strong>
+<ul>
+<li><strong>深度重构：</strong> 彻底清理了 Forge 积累十年的冗余代码，尤其是重写了注册系统和属性附件（Attachment）。</li>
+<li><strong>事件系统：</strong> 极其丰富的 Event Bus。在 NeoForge 中，你几乎不需要触碰字节码，通过监听事件就能修改游戏的大部分逻辑。</li>
+<li><strong>数据生成（Datagen）：</strong> 强制推行自动化，减少手动编写 JSON 文件的低级错误。</li>
+</ul>
+</li>
+<li><strong>现状：</strong> 对于 1.20.4 之后的版本，它已经完全取代了老 Forge 的地位。它的 Gradle 配置更加现代化，编译速度也得到了显著提升。</li>
+</ul>
+<hr>
+<h2>2. Fabric：轻量化与速度的极致</h2>
+<p><strong>适用版本：全版本（更新极快）</strong></p>
+<p>Fabric 的哲学是“模块化”：它只提供最基础的加载能力，剩下的功能（如渲染、物品组）都交给社区库（Fabric API）。</p>
+<ul>
+<li><strong>核心优势：</strong>
+<ul>
+<li><strong>Mixin 为王：</strong> Fabric 开发者几乎全员“黑客”，通过 Mixin 直接在 Minecraft 源码中插桩。这种方式虽然门槛稍高，但灵活性无可匹敌。</li>
+<li><strong>零等待更新：</strong> 当 Mojang 发布预览版（Snapshot）时，Fabric 通常在几小时内就能适配。</li>
+<li><strong>Tiny Mappings：</strong> 使用更轻量的混淆映射表，使得内存占用极低，非常适合编写优化类模组（如 Sodium）。</li>
+</ul>
+</li>
+<li><strong>开发建议：</strong> 如果你的模组逻辑简单，或者追求极致的启动速度，Fabric 是不二之选。</li>
+</ul>
+<hr>
+<h2>3. Quilt：更具野心的社区派系</h2>
+<p><strong>适用版本：与 Fabric 兼容</strong></p>
+<p>Quilt 起初是作为 Fabric 的一个分叉诞生的，但它的目标是建立一个更开放、对开发者更友好的生态。</p>
+<ul>
+<li><strong>特点：</strong>
+<ul>
+<li><strong>向下兼容：</strong> 它可以原生运行绝大多数 Fabric 模组。</li>
+<li><strong>QSL (Quilt Standard Libraries)：</strong> 相比 Fabric API，Quilt 的标准库封装得更高级，试图解决 Fabric 有时过于“底层”导致开发效率低的问题。</li>
+<li><strong>更现代的配置：</strong> 比如原生支持 TOML 或更强大的插件化元数据。</li>
+</ul>
+</li>
+<li><strong>现状：</strong> 尽管技术设计非常优雅，但由于和 Fabric 生态重叠较多，目前仍处于“小而美”的状态。</li>
+</ul>
+<hr>
+<h2>4. Minecraft Forge：辉煌的落幕</h2>
+<p><strong>适用版本：1.7.10 - 1.20.1（经典版）</strong></p>
+<p>曾经的绝对霸主，现在的“遗产维护者”。</p>
+<ul>
+<li><strong>现状：</strong> 在 1.20.1 之后，随着核心团队转投 NeoForge，原版 Forge 的维护节奏显著放缓。它不再是新技术（如现代渲染优化）的首发平台。</li>
+<li><strong>为什么还在用：</strong> 为了<strong>存量市场</strong>。如果你要为 1.12.2 或 1.16.5 的大型整合包（如 RL Craft 等）开发续作或补丁，Forge 依然是唯一的战场。它的多线程加载机制在老版本中依然有优势。</li>
+</ul>
+<hr>
+<h2>5. Cleanroom：老版本的救星 (1.12.2)</h2>
+<p><strong>适用版本：1.12.2 专用</strong></p>
+<p>这是一个非常硬核的项目，旨在通过“换心脏”的方式拯救 1.12.2 这个养老版本。</p>
+<ul>
+<li><strong>核心功能：</strong>
+<ul>
+<li><strong>JVM 升级：</strong> 突破 Java 8 的限制，让 1.12.2 跑在 Java 21 甚至更高版本上，获得显著的 GC 优化。</li>
+<li><strong>技术栈翻新：</strong> 引入了 LWJGL3（原版 1.12.2 使用的是已过时的 LWJGL2），这意味着你可以使用更现代的 OpenGL 特性。</li>
+<li><strong>Forge 兼容层：</strong> 它是 Forge 1.12.2 的现代化替代品，目标是兼容 99% 的老模组，同时原生支持 Mixin。</li>
+</ul>
+</li>
+<li><strong>开发建议：</strong> 如果你专注于 1.12.2 的长线开发，且受够了老 Forge 的内存泄漏和加载缓慢，Cleanroom 是唯一的现代化方案。</li>
+</ul>
+<hr>
+<h2>总结：该如何选？</h2>
+<p>在 2026 年，我的建议如下：</p>
+<ol>
+<li><strong>新项目首选：</strong> <strong>NeoForge</strong>（做大型内容、机器、生态）或 <strong>Fabric</strong>（做功能增强、性能优化）。</li>
+<li><strong>跨平台方案：</strong> 使用 <strong>Architectury SDK</strong>。它允许你编写一套核心代码，同时发布针对 NeoForge 和 Fabric 的版本，极大节省维护成本。</li>
+<li><strong>情怀重燃：</strong> 如果你想拯救那些卡顿的 1.12.2 整合包，请果断尝试 <strong>Cleanroom</strong>。</li>
+</ol></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://liuruenGG.github.io">神人刘睿宸的博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","liuruenGG/liuruenGG.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
